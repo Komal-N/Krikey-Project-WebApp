@@ -8,7 +8,7 @@ const App = () => {
 
   useEffect(() => {
     async function fetchAuthors() {
-      const res = await fetch('http://localhost:8080/top-authors');
+      const res = await fetch('/top-authors');
       const data = await res.json();
       setAuthors(data);
     }
