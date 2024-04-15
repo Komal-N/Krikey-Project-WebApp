@@ -2,6 +2,9 @@ const express = require('express');
 const app = express();
 const port = 8080;
 const pool = require('./db');
+const path = require('path');
+
+app.use(express.static(path.join(__dirname, './frontend/dist')));
 
 pool.query('SELECT NOW()', (err, res) => {
     if (err) {
@@ -46,6 +49,13 @@ app.get('/top-authors', async (req, res) => {
         res.status(500).json({ message: 'Error retrieving authors' });
     }
 });
+
+/**
+ * Serve the static react application
+ */
+// app.get('/', (req, res) => {
+//     res.sendFile('./frontend/dist/index.html', { root: __dirname });
+// });
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

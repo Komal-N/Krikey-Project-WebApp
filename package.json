@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "nodemon app.js"
+    "dev": "npm run build && nodemon app.js",
+    "build": "cd frontend && npm run build"
   },
   "devDependencies": {
     "dotenv": "^16.4.5",
